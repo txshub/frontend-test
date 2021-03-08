@@ -1,0 +1,15 @@
+.marketing-lists-wrapper {
+  overflow: auto;
+}
+
+.tab-content {
+  position: relative;
+  padding: 5px;
+}
+
+.filters-card {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  right: 5px;
+}

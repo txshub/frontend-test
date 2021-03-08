@@ -1,0 +1,15 @@
+<div class="pagination-container">
+  <button class="icon-button pagination-button" @click="changePage('previous')">
+    <ChevronLeftIcon class="chevron-icon" />
+  </button>
+  <button 
+    v-for="index in pageCount" 
+    :key="index" 
+    :class="{ 'button-current': index === currentPage, 'pagination-button': true }"
+    @click="changePage(index)">
+      {{index}}
+  </button>
+  <button class="icon-button pagination-button" @click="changePage('next')">
+    <ChevronRightIcon class="chevron-icon" />
+  </button>
+</div>

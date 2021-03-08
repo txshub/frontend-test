@@ -1,0 +1,57 @@
+.form-wrapper {
+  padding: 30px;
+  overflow: auto;
+}
+
+.aggregation-select {
+  width: 75px;
+  height: 40px;
+  margin: 0px 10px;
+  vertical-align: middle;
+}
+
+.aggregation-text {
+  margin: auto 0px;
+}
+
+.aggregation-row {
+  margin-bottom: 10px;
+}
+
+.filter-input-row {
+  border-top: 1px solid #dddddd;
+  padding-top: 10px;
+  flex-grow: 1;
+}
+
+.filter-row {
+  display: flex;
+}
+
+.multi-select {
+  padding-top: 14px;
+}
+
+.remove-button {
+  margin: auto 0px;
+  visibility: hidden;
+}
+
+.filter-row:hover > .remove-button {
+  visibility: visible;
+}
+
+.add-button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  border-radius: 5px;
+  color: #21cc99;
+}
+
+.submit-button {
+  color: #ffffff;
+  float: right;
+}

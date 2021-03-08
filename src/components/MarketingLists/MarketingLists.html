@@ -1,0 +1,9 @@
+<v-card elevation="2" class="marketing-lists-wrapper">
+  <Tabs :items="getTabItems" v-model="currentTab"/>
+  <div class="tab-content">
+    <DataTable :tableData="tableData" :columns="columns" :itemsPerPage="7"/>
+    <div v-if="currentTab === 'newTab'" class="filters-card">
+      <FiltersForm @createSegment="createSegment($event)" />
+    </div>
+  </div>
+</v-card>

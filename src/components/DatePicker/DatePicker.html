@@ -1,0 +1,23 @@
+<v-menu
+v-model="menu"
+:close-on-content-click="false"
+:nudge-right="40"
+transition="scale-transition"
+offset-y
+min-width="auto"
+>
+  <template v-slot:activator="{ on }">
+    <v-text-field
+      :value="date"
+      label="Date"
+      prepend-icon="mdi-calendar"
+      readonly
+      single-line
+      v-on="on"
+    ></v-text-field>
+  </template>
+  <v-date-picker
+    :value="date"
+    @input="changeDate"
+  ></v-date-picker>
+</v-menu>

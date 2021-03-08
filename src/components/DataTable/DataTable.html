@@ -1,0 +1,29 @@
+<div class="data-table-wrapper">
+  <div class="search-row">
+    <Magnify class="search-icon"/>
+    <input class="search-input" v-model="searchTerm" type="search" placeholder="Search for a contact">
+  </div>
+  <div class="records-row">
+    <span class="records-info">Showing {{getCurrentItemCount}} of {{getFilteredData.length}} records</span>
+    <Pagination class="records-pagination" :pageCount="getPageCount" v-model="page"/>
+  </div>
+  <div class="table-wrapper">
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th v-for="column in columns" :key="column.text">{{column.text}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="row in getFilteredData.slice((page - 1) * itemsPerPage, page * itemsPerPage)" :key="row.emailId">
+          <td v-for="column in columns" :key="column.text + '-' + row.emailId">
+            <div class="cell">
+              <img v-if="column.imageSource" class="record-image" :src="column.imageSource(row)" />
+              <span class="record-text" :style="column.style && column.style(row)">{{column.value(row)}}</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

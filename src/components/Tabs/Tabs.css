@@ -1,0 +1,44 @@
+.tabs-wrapper {
+  margin: 20px 5px;
+  display: flex;
+}
+
+.tab-button {
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  
+  max-width: 200px;
+  line-height: 30px;
+  padding: 0px;
+  flex-grow: 1;
+  margin: 0px 1px;
+  border: solid;
+  border-radius: 2px 12px 2px 2px;
+  border-width: 1px;
+  border-color: #dddddd;
+  background-color: #ffffff;
+  font-size: 0.8em;
+}
+
+.plus-button {
+  position: relative;
+  max-width: 34px;
+  border-radius: 12px 12px 2px 2px;
+}
+
+.material-design-icon.plus-icon > .material-design-icon__svg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  left: 7px;
+}
+
+.selected-tab {
+  border-color: #dddddd;
+  background-color: #f6f6f6;
+  font-weight: 600;
+}

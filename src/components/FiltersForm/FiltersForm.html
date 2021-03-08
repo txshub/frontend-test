@@ -1,0 +1,94 @@
+<v-card class="form-wrapper">
+  <v-row class="aggregation-row" no-gutters>
+    <div class="aggregation-text">Contacts match</div>
+    <div class="aggregation-select">
+      <v-select :items="aggregationItems" v-model="aggregationType" solo dense>
+        <template v-slot:selection="{ item }">
+          <span class="d-flex justify-center" style="width: 100%;">
+            {{ item }}
+          </span>
+        </template>
+      </v-select>
+    </div>
+    <div class="aggregation-text">of the following:</div>
+  </v-row>
+  <v-form ref="form" lazy-validation>
+    <div v-for="(filter, index) in filters" :key="index">
+      <div class="filter-row">
+        <div class="filter-input-row">
+          <v-row>
+            <v-col>
+              <v-select 
+                :items="filterTypes"
+                :rules="selectFieldRules"
+                v-model="filter.field"
+                @change="fieldChanged(index)"
+                label="Filter By"
+                single-line
+              />
+            </v-col>
+            <v-col>
+              <div v-if="filter.type">
+                <v-select
+                  :items="filter.operatorItems"
+                  :value="filter.operator"
+                  @input="updateProp(index, 'operator', $event)"
+                  label="Condition"
+                  single-line
+                />
+              </div>
+            </v-col>
+            <v-col>
+              <v-text-field
+                v-if="filter.type === 'number'"
+                :rules="inputValueRules"
+                type="number"
+                v-model="filter.value1"
+                label="Value"
+                single-line
+              />
+              <DatePicker v-if="filter.type === 'date'" :rules="inputValueRules" v-model="filter.value1" />
+              <div v-if="filter.type === 'multi'" class="multi-select">
+                <v-select
+                  :items="filter.items"
+                  :rules="selectValueRules"
+                  v-model="filter.value1"
+                  label="Values"
+                  single-line dense multiple solo
+                >
+                  <template v-slot:selection="{ item }">
+                    <span class="d-flex justify-center" style="width: 100%;">
+                      {{ item.text }}
+                    </span>
+                  </template>
+                </v-select>
+              </div>
+            </v-col>
+            <v-col>
+              <v-text-field
+                v-if="filters[index].type === 'number' && filters[index].operator === 'isBetween'"
+                :rules="inputValueRules"
+                type="number"
+                v-model="filter.value2"
+                label="Value"
+                single-line
+              />
+              <DatePicker
+                v-if="filter.type === 'date' && filter.operator === 'isBetween'"
+                :rules="inputValueRules"
+                v-model="filter.value2"
+              />
+            </v-col>
+          </v-row>
+        </div>
+        <v-btn v-if="filters.length > 1" icon x-small class="remove-button" @click="removeFilter(index)">
+          <v-icon small>mdi-close</v-icon>
+        </v-btn>
+      </div>
+    </div>
+  </v-form>
+  <div>
+    <button class="add-button text-none font-weight-regular" @click="addFilter">+ Add another condition</button>
+  </div>
+  <v-btn @click="submitForm" class="submit-button text-none" color="#21cc99">Create Segment</v-btn>
+</v-card>

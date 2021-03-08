@@ -1,0 +1,16 @@
+<div class="tabs-wrapper">
+  <button 
+    v-for="(item, index) in items" 
+    :key="item" 
+    :class="{ 'tab-button': true, 'selected-tab': index === currentTab }"
+    @click="changeTab(index)"
+  >
+    {{item}}
+  </button>
+  <button
+    :class="{ 'tab-button': true, 'plus-button': true, 'selected-tab': currentTab === 'newTab' }"
+    @click="changeTab('newTab')"
+  >
+    <PlusIcon class="plus-icon" />
+  </button>
+</div>
